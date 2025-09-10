@@ -230,7 +230,7 @@ const UserDashboard = () => {
               <CardTitle>Conservation Center</CardTitle>
               <CardDescription>Tips and alerts for better water management</CardDescription>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-8">
               <div className="p-3 border rounded-lg bg-green-50 dark:bg-green-950/20">
                 <div className="flex items-start gap-3">
                   <Award className="w-5 h-5 text-green-500 mt-0.5" />
