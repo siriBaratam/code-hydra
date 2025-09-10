@@ -8,24 +8,24 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Water-themed color palette */
-    --background: 210 100% 97%;
-    --foreground: 200 50% 15%;
+    /* Water-themed color palette - darker theme */
+    --background: 210 40% 92%;
+    --foreground: 200 60% 12%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 200 50% 15%;
+    --card: 210 20% 96%;
+    --card-foreground: 200 60% 12%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 200 50% 15%;
+    --popover: 210 20% 96%;
+    --popover-foreground: 200 60% 12%;
 
-    --primary: 195 100% 35%;
+    --primary: 195 100% 32%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 200 100% 88%;
-    --secondary-foreground: 200 50% 15%;
+    --secondary: 200 60% 82%;
+    --secondary-foreground: 200 60% 12%;
 
-    --muted: 200 30% 93%;
-    --muted-foreground: 200 20% 50%;
+    --muted: 200 25% 88%;
+    --muted-foreground: 200 30% 45%;
 
     --accent: 185 100% 45%;
     --accent-foreground: 0 0% 100%;
