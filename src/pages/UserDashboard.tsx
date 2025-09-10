@@ -123,6 +123,29 @@ const UserDashboard = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
+        {/* Banner */}
+        <div className="mb-8 relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 via-cyan-500 to-teal-500 p-8 text-white">
+          <div className="absolute inset-0 bg-black/10"></div>
+          <div className="relative z-10 text-center">
+            <div className="flex justify-center mb-4">
+              <div className="p-3 bg-white/20 rounded-full backdrop-blur-sm">
+                <Droplets className="w-8 h-8" />
+              </div>
+            </div>
+            <h2 className="text-3xl font-bold mb-2">Every Drop Counts</h2>
+            <p className="text-lg opacity-90 mb-4">Track, Save, Sustain</p>
+            <p className="text-sm opacity-80 max-w-2xl mx-auto">
+              Join thousands of users making a difference. Your water conservation efforts contribute to a sustainable future for our community and planet.
+            </p>
+          </div>
+          <div className="absolute top-4 right-4 opacity-20">
+            <Leaf className="w-16 h-16" />
+          </div>
+          <div className="absolute bottom-4 left-4 opacity-20">
+            <Droplet className="w-12 h-12" />
+          </div>
+        </div>
+
         {/* Stats Overview */}
         <div className="grid gap-6 md:grid-cols-3 lg:grid-cols-6 mb-8">
           <Card className="lg:col-span-2">
@@ -185,62 +208,7 @@ const UserDashboard = () => {
           </Card>
         </div>
 
-        <div className="grid gap-6 lg:grid-cols-2">
-          {/* Usage Trends */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Usage Overview</CardTitle>
-              <CardDescription>Your water consumption patterns</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Kitchen</span>
-                  <span className="text-sm">850L (35%)</span>
-                </div>
-                <div className="w-full bg-secondary/20 rounded-full h-2">
-                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: '35%' }}></div>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Bathroom</span>
-                  <span className="text-sm">1,200L (49%)</span>
-                </div>
-                <div className="w-full bg-secondary/20 rounded-full h-2">
-                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: '49%' }}></div>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Laundry</span>
-                  <span className="text-sm">250L (10%)</span>
-                </div>
-                <div className="w-full bg-secondary/20 rounded-full h-2">
-                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: '10%' }}></div>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Garden</span>
-                  <span className="text-sm">150L (6%)</span>
-                </div>
-                <div className="w-full bg-secondary/20 rounded-full h-2">
-                  <div className="bg-blue-500 h-2 rounded-full" style={{ width: '6%' }}></div>
-                </div>
-              </div>
-
-              <div className="mt-4 p-3 bg-muted rounded-lg">
-                <p className="text-sm text-muted-foreground">
-                  Great job! You're using 8.5% less water than last week.
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
+        <div className="grid gap-6 lg:grid-cols-1 max-w-2xl mx-auto">
           {/* Conservation Tips & Alerts */}
           <Card>
             <CardHeader>
