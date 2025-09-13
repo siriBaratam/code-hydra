@@ -276,60 +276,68 @@ const SupplierDashboard = () => {
             </CardContent>
           </Card>
 
-          {/* Quality Monitoring */}
-          <Card>
-            <CardHeader>
-              <CardTitle>Quality Monitoring</CardTitle>
-              <CardDescription>Real-time water quality parameters</CardDescription>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">pH Level</span>
-                  <span className="text-sm">7.2</span>
-                </div>
-                <div className="w-full bg-secondary/20 rounded-full h-2">
-                  <div className="bg-green-500 h-2 rounded-full" style={{ width: '85%' }}></div>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Chlorine</span>
-                  <span className="text-sm">0.8 mg/L</span>
-                </div>
-                <div className="w-full bg-secondary/20 rounded-full h-2">
-                  <div className="bg-green-500 h-2 rounded-full" style={{ width: '90%' }}></div>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Turbidity</span>
-                  <span className="text-sm">0.2 NTU</span>
-                </div>
-                <div className="w-full bg-secondary/20 rounded-full h-2">
-                  <div className="bg-green-500 h-2 rounded-full" style={{ width: '95%' }}></div>
-                </div>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm font-medium">Pressure</span>
-                  <span className="text-sm">45 PSI</span>
-                </div>
-                <div className="w-full bg-secondary/20 rounded-full h-2">
-                  <div className="bg-yellow-500 h-2 rounded-full" style={{ width: '75%' }}></div>
-                </div>
-              </div>
-
-              <div className="mt-4 p-3 bg-muted rounded-lg">
-                <p className="text-sm text-muted-foreground">
-                  Last updated: {new Date().toLocaleTimeString()}
+          {/* Alert Details */}
+          <div className="space-y-6">
+            <Card className="border-yellow-200 bg-yellow-50 dark:bg-yellow-950/20 dark:border-yellow-800">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-yellow-700 dark:text-yellow-300">
+                  <AlertTriangle className="w-5 h-5" />
+                  Maintenance Alert
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="font-medium mb-2">Pipeline B Pressure Drop</p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Detected 15% pressure reduction in Main Pipeline B affecting Sectors 6-10. 
+                  Scheduled maintenance required within 48 hours.
                 </p>
-              </div>
-            </CardContent>
-          </Card>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Clock className="w-3 h-3" />
+                  <span>Reported: 2 hours ago</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-orange-200 bg-orange-50 dark:bg-orange-950/20 dark:border-orange-800">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-orange-700 dark:text-orange-300">
+                  <AlertTriangle className="w-5 h-5" />
+                  Quality Warning
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="font-medium mb-2">Chlorine Level Below Optimal</p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Chlorine levels in Sector 3 have dropped to 0.6 mg/L. 
+                  Recommended range is 0.8-1.2 mg/L for optimal disinfection.
+                </p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Clock className="w-3 h-3" />
+                  <span>Reported: 1 hour ago</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-red-200 bg-red-50 dark:bg-red-950/20 dark:border-red-800">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2 text-red-700 dark:text-red-300">
+                  <AlertTriangle className="w-5 h-5" />
+                  Critical Alert
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="font-medium mb-2">Pump Station 2 Offline</p>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Emergency shutdown detected at Pump Station 2. Backup systems activated. 
+                  Technical team dispatched for immediate inspection.
+                </p>
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                  <Clock className="w-3 h-3" />
+                  <span>Reported: 30 minutes ago</span>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
         </div>
       </main>
     </div>
