@@ -272,34 +272,29 @@ const Auth = () => {
   if (mode === 'landing') {
     return (
       <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-accent/10 flex items-center justify-center p-4">
-        <Card className="w-full max-w-2xl">
+        <Card className="w-full max-w-md">
           <CardHeader className="text-center">
-            <div className="mx-auto w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
-              <Droplet className="w-8 h-8 text-primary-foreground" />
+            <div className="mx-auto w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+              <Droplet className="w-6 h-6 text-primary-foreground" />
             </div>
-            <CardTitle className="text-3xl font-bold">AquaGuard</CardTitle>
-            <CardDescription className="text-lg">
+            <CardTitle className="text-2xl font-bold">AquaGuard</CardTitle>
+            <CardDescription>
               Choose your role to continue
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="space-y-3">
               {(['admin', 'supplier', 'user'] as AppRole[]).map((role) => {
                 const config = getRoleConfig(role);
-                const Icon = config.icon;
                 
                 return (
                   <Button
                     key={role}
                     onClick={() => handleRoleSelect(role)}
                     variant="outline"
-                    className={`h-auto p-6 flex flex-col items-center gap-4 hover:shadow-lg transition-all duration-200 ${config.color} text-white border-none hover:scale-105`}
+                    className="w-full justify-start h-12"
                   >
-                    <Icon className="w-12 h-12" />
-                    <div className="text-center">
-                      <div className="font-semibold text-lg">{config.title}</div>
-                      <div className="text-sm opacity-90 mt-1">{config.description}</div>
-                    </div>
+                    {config.title}
                   </Button>
                 );
               })}
