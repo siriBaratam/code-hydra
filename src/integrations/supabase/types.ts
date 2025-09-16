@@ -16,29 +16,44 @@ export type Database = {
     Tables: {
       profiles: {
         Row: {
+          area: string | null
+          city: string | null
           created_at: string
+          door_number: string | null
           full_name: string | null
           id: string
           location: string | null
           phone: string | null
+          pincode: string | null
+          street: string | null
           updated_at: string
           user_id: string
         }
         Insert: {
+          area?: string | null
+          city?: string | null
           created_at?: string
+          door_number?: string | null
           full_name?: string | null
           id?: string
           location?: string | null
           phone?: string | null
+          pincode?: string | null
+          street?: string | null
           updated_at?: string
           user_id: string
         }
         Update: {
+          area?: string | null
+          city?: string | null
           created_at?: string
+          door_number?: string | null
           full_name?: string | null
           id?: string
           location?: string | null
           phone?: string | null
+          pincode?: string | null
+          street?: string | null
           updated_at?: string
           user_id?: string
         }
@@ -79,6 +94,16 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      check_address_exists: {
+        Args: {
+          _area: string
+          _city: string
+          _door_number: string
+          _pincode: string
+          _street: string
+        }
+        Returns: boolean
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
