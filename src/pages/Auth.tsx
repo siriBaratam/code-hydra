@@ -6,7 +6,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { useAuth } from '@/hooks/useAuth';
-import { Droplet, Eye, EyeOff, Shield, Truck, Users, ArrowLeft } from 'lucide-react';
+import { Droplet, Eye, EyeOff, Shield, Truck, Users, ArrowLeft, Building, LogOut } from 'lucide-react';
 import { toast } from '@/hooks/use-toast';
 
 type AppRole = 'admin' | 'supplier' | 'user';
@@ -305,40 +305,139 @@ const Auth = () => {
     };
     return configs[role];
   };
-
+  const {signOut } = useAuth();
+  const handleSignOut = async () => {
+    await signOut();
+    navigate("/auth");
+  };
   if (mode === 'landing') {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-accent/10 flex items-center justify-center p-4">
-        <Card className="w-full max-w-md">
-          <CardHeader className="text-center">
-            <div className="mx-auto w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-              <Droplet className="w-6 h-6 text-primary-foreground" />
-            </div>
-            <CardTitle className="text-2xl font-bold">AquaGuard</CardTitle>
-            <CardDescription>
-              Choose your role to continue
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
-              {(['admin', 'supplier', 'user'] as AppRole[]).map((role) => {
-                const config = getRoleConfig(role);
+      // <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-accent/10 flex items-center justify-center p-4">
+      //   <Card className="w-full max-w-md">
+      //     <CardHeader className="text-center">
+      //       <div className="mx-auto w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+      //         <Droplet className="w-6 h-6 text-primary-foreground" />
+      //       </div>
+      //       <CardTitle className="text-2xl font-bold">AquaGuard</CardTitle>
+      //       <CardDescription>
+      //         Choose your role to continue
+      //       </CardDescription>
+      //     </CardHeader>
+      //     <CardContent>
+      //       <div className="space-y-3">
+      //         {(['admin', 'supplier', 'user'] as AppRole[]).map((role) => {
+      //           const config = getRoleConfig(role);
                 
-                return (
-                  <Button
-                    key={role}
-                    onClick={() => handleRoleSelect(role)}
-                    variant="outline"
-                    className="w-full justify-start h-12"
-                  >
-                    {config.title}
-                  </Button>
-                );
-              })}
+      //           return (
+      //             <Button
+      //               key={role}
+      //               onClick={() => handleRoleSelect(role)}
+      //               variant="outline"
+      //               className="w-full justify-start h-12"
+      //             >
+      //               {config.title}
+      //             </Button>
+      //           );
+      //         })}
+      //       </div>
+      //     </CardContent>
+      //   </Card>
+      // </div>
+      <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-accent/10">
+      <header className="border-b bg-card/50 backdrop-blur">
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="p-2 bg-primary rounded-lg">
+                <Droplet className="w-6 h-6 text-primary-foreground" />
+              </div>
+              <div>
+                <h1 className="text-xl font-bold">AquaGuard</h1>
+                <p className="text-sm text-muted-foreground">Smart Water Monitoring</p>
+              </div>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+            <div className="flex items-center gap-4">
+              <div className="text-right">
+                {/* <p className="text-sm font-medium">{user.email}</p> */}
+                <p className="text-xs text-muted-foreground">System User</p>
+              </div>
+              <Button variant="outline" size="sm" onClick={handleSignOut}>
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign Out
+              </Button>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main className="container mx-auto px-4 py-8">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold mb-4">Welcome to AquaGuard</h2>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Smart Water Monitoring & Conservation System - Protecting our water resources through intelligent monitoring and community collaboration.
+          </p>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3 max-w-4xl mx-auto">
+          <Card className="text-center">
+            <CardHeader>
+              <div className="mx-auto w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-2">
+                <Shield className="w-6 h-6 text-primary" />
+              </div>
+              <CardTitle>Admin Dashboard</CardTitle>
+              <CardDescription>
+                Manage suppliers, monitor system health, and oversee water conservation efforts
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button className="w-full" onClick={() => handleRoleSelect('admin')}>
+                Access Dashboard
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center">
+            <CardHeader>
+              <div className="mx-auto w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center mb-2">
+                <Building className="w-6 h-6 text-accent" />
+              </div>
+              <CardTitle>Supplier Dashboard</CardTitle>
+              <CardDescription>
+                Monitor infrastructure, track leakages, and manage water distribution networks
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button className="w-full" onClick={() => handleRoleSelect('supplier')}>
+                Access Dashboard
+              </Button>
+            </CardContent>
+          </Card>
+
+          <Card className="text-center">
+            <CardHeader>
+              <div className="mx-auto w-12 h-12 bg-secondary/50 rounded-full flex items-center justify-center mb-2">
+                <Users className="w-6 h-6 text-secondary-foreground" />
+              </div>
+              <CardTitle>User Dashboard</CardTitle>
+              <CardDescription>
+                View water quality, track usage, and participate in conservation programs
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button className="w-full" onClick={() => handleRoleSelect('user')}>
+                Access Dashboard
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+
+        <div className="mt-12 text-center">
+          <p className="text-muted-foreground">
+            Your role-specific dashboard will be available soon. Authentication system is now ready!
+          </p>
+        </div>
+      </main>
+    </div>
     );
   }
 
