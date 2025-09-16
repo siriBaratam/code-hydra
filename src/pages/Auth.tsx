@@ -37,9 +37,43 @@ const Auth = () => {
 
   useEffect(() => {
     if (user) {
-      navigate('/');
+      redirectToRoleDashboard();
     }
   }, [user, navigate]);
+
+  const redirectToRoleDashboard = async () => {
+    if (!user) return;
+    
+    try {
+      const { data: roleData } = await supabase
+        .from('user_roles')
+        .select('role, status')
+        .eq('user_id', user.id)
+        .eq('status', 'approved')
+        .maybeSingle();
+
+      if (roleData) {
+        switch (roleData.role) {
+          case 'admin':
+            navigate('/admin');
+            break;
+          case 'supplier':
+            navigate('/supplier');
+            break;
+          case 'user':
+            navigate('/user');
+            break;
+          default:
+            navigate('/');
+        }
+      } else {
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Error checking user role:', error);
+      navigate('/');
+    }
+  };
 
   const resetForm = () => {
     setEmail('');
@@ -179,6 +213,7 @@ const Auth = () => {
         description: 'Account created successfully. Please check your email to confirm your account.',
       });
       
+      // Redirect will be handled by useEffect when user is confirmed
       setMode('signin');
       resetForm();
     } catch (error: any) {
@@ -215,6 +250,8 @@ const Auth = () => {
         title: 'Welcome back!',
         description: 'Successfully signed in to AquaGuard.',
       });
+      
+      // Redirect will be handled by useEffect
     } catch (error: any) {
       toast({
         title: 'Error',

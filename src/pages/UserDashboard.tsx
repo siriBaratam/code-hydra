@@ -36,14 +36,14 @@ const UserDashboard = () => {
     weeklyTrend: -8.5
   });
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     navigate("/auth");
-  //     return;
-  //   }
+  useEffect(() => {
+    if (!user) {
+      navigate("/auth");
+      return;
+    }
     
-  //   checkUserRole();
-  // }, [user, navigate]);
+    checkUserRole();
+  }, [user, navigate]);
 
   const checkUserRole = async () => {
     if (!user) return;
@@ -83,16 +83,16 @@ const UserDashboard = () => {
     navigate("/auth");
   };
 
-  // if (loading) {
-  //   return (
-  //     <div className="flex min-h-screen items-center justify-center bg-background">
-  //       <div className="text-center">
-  //         <Droplet className="w-12 h-12 text-primary mx-auto mb-4 animate-spin" />
-  //         <p className="text-muted-foreground">Loading User Dashboard...</p>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <div className="text-center">
+          <Droplet className="w-12 h-12 text-primary mx-auto mb-4 animate-spin" />
+          <p className="text-muted-foreground">Loading User Dashboard...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-accent/10">

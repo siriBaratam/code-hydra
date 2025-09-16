@@ -49,15 +49,15 @@ const AdminDashboard = () => {
     systemAlerts: 2
   });
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     navigate("/auth");
-  //     return;
-  //   }
+  useEffect(() => {
+    if (!user) {
+      navigate("/auth");
+      return;
+    }
     
-  //   checkAdminRole();
-  //   fetchUserRoles();
-  // }, [user, navigate]);
+    checkAdminRole();
+    fetchUserRoles();
+  }, [user, navigate]);
 
   const checkAdminRole = async () => {
     if (!user) return;

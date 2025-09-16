@@ -35,14 +35,14 @@ const SupplierDashboard = () => {
     maintenanceAlerts: 3
   });
 
-  // useEffect(() => {
-  //   if (!user) {
-  //     navigate("/auth");
-  //     return;
-  //   }
+  useEffect(() => {
+    if (!user) {
+      navigate("/auth");
+      return;
+    }
     
-  //   checkSupplierRole();
-  // }, [user, navigate]);
+    checkSupplierRole();
+  }, [user, navigate]);
 
   const checkSupplierRole = async () => {
     if (!user) return;
@@ -90,50 +90,50 @@ const SupplierDashboard = () => {
     navigate("/auth");
   };
 
-  // if (loading) {
-  //   return (
-  //     <div className="flex min-h-screen items-center justify-center bg-background">
-  //       <div className="text-center">
-  //         <Droplet className="w-12 h-12 text-primary mx-auto mb-4 animate-spin" />
-  //         <p className="text-muted-foreground">Loading Supplier Dashboard...</p>
-  //       </div>
-  //     </div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-background">
+        <div className="text-center">
+          <Droplet className="w-12 h-12 text-primary mx-auto mb-4 animate-spin" />
+          <p className="text-muted-foreground">Loading Supplier Dashboard...</p>
+        </div>
+      </div>
+    );
+  }
 
-  // if (supplierStatus !== 'approved') {
-  //   return (
-  //     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-accent/10 flex items-center justify-center">
-  //       <Card className="w-full max-w-md text-center">
-  //         <CardHeader>
-  //           <div className="mx-auto w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mb-4">
-  //             <Clock className="w-8 h-8 text-secondary-foreground" />
-  //           </div>
-  //           <CardTitle>Account Pending Approval</CardTitle>
-  //           <CardDescription>
-  //             Your supplier account is currently under review by our administrators.
-  //             You'll receive access once approved.
-  //           </CardDescription>
-  //         </CardHeader>
-  //         <CardContent className="space-y-4">
-  //           <Badge variant="secondary" className="text-sm">
-  //             Status: {supplierStatus}
-  //           </Badge>
-  //           <div className="flex gap-2">
-  //             <Button variant="outline" onClick={() => navigate("/")} className="flex-1">
-  //               <Droplet className="w-4 h-4 mr-2" />
-  //               Home
-  //             </Button>
-  //             <Button variant="outline" onClick={handleSignOut} className="flex-1">
-  //               <LogOut className="w-4 h-4 mr-2" />
-  //               Sign Out
-  //             </Button>
-  //           </div>
-  //         </CardContent>
-  //       </Card>
-  //     </div>
-  //   );
-  // }
+  if (supplierStatus !== 'approved') {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-accent/10 flex items-center justify-center">
+        <Card className="w-full max-w-md text-center">
+          <CardHeader>
+            <div className="mx-auto w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mb-4">
+              <Clock className="w-8 h-8 text-secondary-foreground" />
+            </div>
+            <CardTitle>Account Pending Approval</CardTitle>
+            <CardDescription>
+              Your supplier account is currently under review by our administrators.
+              You'll receive access once approved.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <Badge variant="secondary" className="text-sm">
+              Status: {supplierStatus}
+            </Badge>
+            <div className="flex gap-2">
+              <Button variant="outline" onClick={() => navigate("/")} className="flex-1">
+                <Droplet className="w-4 h-4 mr-2" />
+                Home
+              </Button>
+              <Button variant="outline" onClick={handleSignOut} className="flex-1">
+                <LogOut className="w-4 h-4 mr-2" />
+                Sign Out
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-secondary/20 to-accent/10">
